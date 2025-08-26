@@ -11,7 +11,6 @@ const Skills = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Animate skills after a delay
           setTimeout(() => {
             setAnimatedSkills(technicalSkills.map((_, index) => index));
           }, 800);
@@ -40,7 +39,7 @@ const Skills = () => {
       background: 'rgba(0, 0, 0, 0.02)'
     }}>
       <div className="container">
-        {/* Section Header - Compact */}
+        {/* Section Header */}
         <div className={`animate-fade-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
           textAlign: 'center',
           marginBottom: '3rem'
@@ -69,15 +68,15 @@ const Skills = () => {
           </div>
         </div>
         
-        {/* FIXED: All skills in single box */}
-        <div style={{
+        {/* Skills Layout */}
+        <div className="skills-grid" style={{
           display: 'grid',
           gridTemplateColumns: '2fr 1fr',
           gap: '3rem',
           alignItems: 'start'
         }}>
           {/* All Skills in One Box */}
-          <div className={`glass-card animate-fade-in animate-delay-1 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ 
+          <div className={`skills-main glass-card animate-fade-in animate-delay-1 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ 
             position: 'relative', 
             overflow: 'hidden',
             padding: '2rem'
@@ -86,13 +85,13 @@ const Skills = () => {
               Technical Proficiency
             </div>
             
-            <div style={{
+            <div className="skills-categories" style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gap: '2rem'
             }}>
               {categories.map((category, categoryIndex) => (
-                <div key={category}>
+                <div key={category} className="skill-category">
                   <div style={{
                     fontSize: '0.9rem',
                     fontWeight: '600',
@@ -180,8 +179,8 @@ const Skills = () => {
             </div>
           </div>
           
-          {/* FIXED: Separate Skills Highlight Box */}
-          <div className={`glass-card animate-fade-in animate-delay-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
+          {/* Skills Highlight Box */}
+          <div className={`skills-highlight glass-card animate-fade-in animate-delay-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
             textAlign: 'center',
             position: 'relative',
             overflow: 'hidden',
@@ -289,15 +288,50 @@ const Skills = () => {
           100% { transform: translateX(100%); }
         }
         
+        /* FIXED: Complete mobile responsiveness */
         @media (max-width: 1024px) {
-          .container > div:nth-child(2) {
+          .skills-grid {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
           }
           
-          .container > div:nth-child(2) > div:first-child > div:nth-child(2) {
+          .skills-categories {
             grid-template-columns: 1fr !important;
             gap: 1.5rem !important;
+          }
+          
+          .skills-highlight {
+            order: -1;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .section {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+            min-height: auto !important;
+          }
+          
+          .glass-card {
+            padding: 1.5rem !important;
+          }
+          
+          .skills-categories {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .container {
+            padding: 0 1rem !important;
+          }
+          
+          .glass-card {
+            padding: 1rem !important;
+          }
+          
+          .section-title {
+            font-size: clamp(1.5rem, 6vw, 2rem) !important;
           }
         }
       `}</style>

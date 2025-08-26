@@ -28,11 +28,11 @@ const Hero = () => {
       id="hero" 
       className="section" 
       style={{ 
-        height: '100vh',
+        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        paddingTop: '0',
-        paddingBottom: '0',
+        paddingTop: '80px',
+        paddingBottom: '80px',
         position: 'relative',
         overflow: 'hidden'
       }}
@@ -61,7 +61,7 @@ const Hero = () => {
       }}></div>
 
       <div className="container">
-        <div style={{
+        <div className="hero-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 400px',
           gap: '4rem',
@@ -70,12 +70,12 @@ const Hero = () => {
           maxWidth: '1200px',
           margin: '0 auto'
         }}>
-          {/* Content Side - FIXED: Better height utilization */}
-          <div className={`animate-fade-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
+          {/* Content Side */}
+          <div className={`hero-content animate-fade-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            height: '400px' // Match photo height
+            height: '400px'
           }}>
             <div className="label mb-3" style={{ fontSize: '0.9rem' }}>
               {personalInfo.welcomeLabel}
@@ -122,7 +122,7 @@ const Hero = () => {
             </div>
             
             {/* Action Buttons */}
-            <div style={{
+            <div className="hero-buttons" style={{
               display: 'flex',
               gap: '1.5rem',
               marginBottom: '2rem',
@@ -145,8 +145,8 @@ const Hero = () => {
               </button>
             </div>
             
-            {/* Stats - FIXED: Better spacing within photo height */}
-            <div style={{
+            {/* Stats */}
+            <div className="hero-stats" style={{
               display: 'flex',
               gap: '2rem',
               flexWrap: 'wrap'
@@ -183,8 +183,8 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Photo Side - FIXED: Exactly 400px height */}
-          <div className={`animate-fade-in animate-delay-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
+          {/* Photo Side */}
+          <div className={`hero-photo animate-fade-in animate-delay-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -221,7 +221,7 @@ const Hero = () => {
                 />
                 
                 {/* Floating Elements */}
-                <div style={{
+                <div className="floating-icon" style={{
                   position: 'absolute',
                   top: '15%',
                   right: '-8%',
@@ -234,7 +234,7 @@ const Hero = () => {
                   <Code size={24} color="white" />
                 </div>
                 
-                <div style={{
+                <div className="floating-icon" style={{
                   position: 'absolute',
                   bottom: '20%',
                   left: '-12%',
@@ -313,24 +313,92 @@ const Hero = () => {
           transition-delay: 0.7s;
         }
         
+        /* FIXED: Complete mobile responsiveness */
         @media (max-width: 1024px) {
-          .container > div {
+          .hero-grid {
             grid-template-columns: 1fr !important;
-            text-align: center;
+            text-align: center !important;
             gap: 3rem !important;
             height: auto !important;
+          }
+          
+          .hero-content {
+            height: auto !important;
+            order: 2;
+          }
+          
+          .hero-photo {
+            height: auto !important;
+            order: 1;
+            margin-bottom: 2rem;
           }
           
           .photo-container {
             width: 300px !important;
             height: 300px !important;
           }
+          
+          .floating-icon {
+            display: none !important;
+          }
         }
         
         @media (max-width: 768px) {
+          .hero-content {
+            text-align: center;
+          }
+          
+          .hero-buttons {
+            flex-direction: column !important;
+            align-items: center;
+          }
+          
+          .hero-buttons .btn-primary,
+          .hero-buttons .btn-secondary {
+            width: 100% !important;
+            max-width: 300px;
+          }
+          
+          .hero-stats {
+            justify-content: center !important;
+            text-align: center !important;
+          }
+          
           .photo-container {
             width: 250px !important;
             height: 250px !important;
+          }
+          
+          .hero-title {
+            font-size: clamp(2rem, 8vw, 3rem) !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .section {
+            padding-top: 100px !important;
+            padding-bottom: 40px !important;
+          }
+          
+          .hero-buttons .btn-primary,
+          .hero-buttons .btn-secondary {
+            padding: 1rem 1.5rem !important;
+            font-size: 0.9rem !important;
+          }
+          
+          .photo-container {
+            width: 200px !important;
+            height: 200px !important;
+          }
+          
+          .hero-stats {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 1rem !important;
+          }
+          
+          .hero-stats > div {
+            text-align: center !important;
           }
         }
       `}</style>

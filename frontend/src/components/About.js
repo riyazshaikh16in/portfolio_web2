@@ -44,7 +44,7 @@ const About = () => {
       justifyContent: 'center'
     }}>
       <div className="container">
-        {/* Section Header - Compact */}
+        {/* Section Header */}
         <div className={`animate-fade-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
           textAlign: 'center',
           marginBottom: '3rem'
@@ -73,16 +73,16 @@ const About = () => {
           </div>
         </div>
         
-        {/* FIXED: Compact single-page layout */}
-        <div style={{
+        {/* Main Content Grid */}
+        <div className="about-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gap: '3rem',
           alignItems: 'start'
         }}>
           {/* Left Column */}
-          <div className={`animate-fade-in animate-delay-1 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-            {/* Story - Compact */}
+          <div className={`about-left animate-fade-in animate-delay-1 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+            {/* Story */}
             <div style={{ marginBottom: '2rem' }}>
               <div className="text-body" style={{
                 fontSize: '1rem',
@@ -101,7 +101,7 @@ const About = () => {
               </div>
             </div>
             
-            {/* FIXED: Compact Achievements - Smaller cards */}
+            {/* Compact Achievements */}
             <div className="glass-card" style={{ 
               position: 'relative', 
               overflow: 'hidden',
@@ -111,13 +111,13 @@ const About = () => {
                 Career Highlights
               </div>
               
-              <div style={{
+              <div className="achievements-grid" style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr 1fr',
                 gap: '1rem'
               }}>
                 {achievements.map((achievement, index) => (
-                  <div key={index} style={{
+                  <div key={index} className="achievement-item" style={{
                     textAlign: 'center',
                     padding: '1rem',
                     background: 'rgba(49, 130, 206, 0.05)',
@@ -149,9 +149,9 @@ const About = () => {
             </div>
           </div>
           
-          {/* Right Column - Compact */}
-          <div className={`animate-fade-in animate-delay-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-            {/* FIXED: Compact Expertise */}
+          {/* Right Column */}
+          <div className={`about-right animate-fade-in animate-delay-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+            {/* Expertise */}
             <div className="glass-card" style={{ 
               marginBottom: '2rem', 
               position: 'relative', 
@@ -208,8 +208,8 @@ const About = () => {
               </div>
             </div>
             
-            {/* FIXED: Compact Education & Certifications */}
-            <div style={{
+            {/* Education & Certifications */}
+            <div className="edu-cert-grid" style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gap: '1.5rem'
@@ -314,15 +314,68 @@ const About = () => {
           transition-delay: 0.4s;
         }
         
+        /* FIXED: Complete mobile responsiveness */
         @media (max-width: 1024px) {
-          .container > div:nth-child(2) {
+          .about-grid {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
           }
           
-          .container > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) {
+          .edu-cert-grid {
             grid-template-columns: 1fr !important;
             gap: 1rem !important;
+          }
+          
+          .achievements-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+          }
+          
+          .achievement-item {
+            display: flex !important;
+            align-items: center !important;
+            text-align: left !important;
+            gap: 1rem !important;
+          }
+          
+          .achievement-item > div:first-child {
+            font-size: 2rem !important;
+            min-width: 60px !important;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .section {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+            min-height: auto !important;
+          }
+          
+          .glass-card {
+            padding: 1.5rem !important;
+          }
+          
+          .achievements-grid {
+            grid-template-columns: 1fr !important;
+          }
+          
+          .achievement-item {
+            flex-direction: row !important;
+            text-align: left !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .container {
+            padding: 0 1rem !important;
+          }
+          
+          .glass-card {
+            padding: 1rem !important;
+          }
+          
+          .section-title {
+            font-size: clamp(1.5rem, 6vw, 2rem) !important;
           }
         }
       `}</style>
