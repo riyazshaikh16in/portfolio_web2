@@ -3,7 +3,7 @@
 
 // 👤 PERSONAL INFORMATION
 export const personalInfo = {
-  name: "Technical Expert", // ✏️ EDIT: Change to your actual name
+  name: "Riyaz Shaikh", // ✏️ FIXED: Changed to actual name
   title: "Automation Specialist", // ✏️ EDIT: Change your professional title
   welcomeLabel: "Welcome to Excellence", // ✏️ EDIT: Customize welcome message
   description: "Two decades of expertise in Test Automation, Firmware Validation, and Smart Meter Technologies. Transforming complex challenges into innovative solutions across global markets.", // ✏️ EDIT: Your description
@@ -118,39 +118,80 @@ export const certifications = [
   // ✏️ ADD MORE: Add comma and new certification above
 ];
 
-// 💼 WORK EXPERIENCE
+// 💼 WORK EXPERIENCE - UPDATED WITH COMPLETE INFORMATION
 export const workExperience = [
   {
-    company: "Landis+Gyr Ltd.", // ✏️ EDIT: Company name
-    position: "Technical Expert - Test and Validation", // ✏️ EDIT: Your position
-    duration: "2015 - Present", // ✏️ EDIT: Duration
-    location: "India", // ✏️ EDIT: Location
-    type: "Full-time", // ✏️ EDIT: Job type
-    description: "Leading Python-based test automation and firmware validation for global smart meter projects.", // ✏️ EDIT: Brief description
+    company: "Landis+Gyr Ltd.", 
+    position: "Technical Expert - Test and Validation", 
+    duration: "2015 - Present", 
+    location: "India", 
+    type: "Full-time", 
+    description: "Leading Python-based test automation and firmware validation for global smart meter projects.",
+    roles: [
+      {
+        title: "Automation Expert",
+        period: "2023–Present",
+        description: "Developed advanced Python-based automation frameworks (PyATS) for firmware validation, enhancing test accuracy and execution speed."
+      },
+      {
+        title: "India Validation Lead", 
+        period: "2020–2023",
+        description: "Led validation for the Indian and APAC markets, managing end-to-end test cycles and reporting directly to the Delivery Head."
+      }
+    ],
     achievements: [
-      "Developed advanced Python-based automation frameworks (PyATS) for firmware validation", // ✏️ EDIT: Your achievements
-      "Led validation for Indian and APAC markets, managing end-to-end test cycles",
-      "Delivered major projects for Tata Power (TPDDL), DPDC Bangladesh, APDCL Assam",
+      "Successfully handled major validation projects for Tata Power (TPDDL), DPDC (Bangladesh), APDCL (Assam), and other key utilities across India",
+      "Defined validation strategies, estimated resources, and ensured timely execution through requirement analysis, test planning, and stakeholder engagement",
+      "Developed advanced Python-based automation frameworks (PyATS) for firmware validation",
       "Enhanced test accuracy to 99.5% and reduced execution time by 60%"
     ],
     technologies: ["Python", "PyATS", "Firmware Testing", "Team Leadership", "Strategic Planning"]
   },
   {
-    company: "Secure Meters Ltd.", // ✏️ EDIT: Company name
-    position: "Executive - Test and Validation", // ✏️ EDIT: Position
-    duration: "2006 - 2015", // ✏️ EDIT: Duration
+    company: "Secure Meters Ltd.", 
+    position: "Executive - Test and Validation", 
+    duration: "2006 - 2015", 
     location: "India",
     type: "Full-time",
-    description: "Led smart meter validation with focus on EMI/EMC compliance and metrology standards.",
+    description: "Led smart meter validation with focus on firmware, EMI/EMC compliance, and metrology standards.",
     achievements: [
-      "Led smart meter validation with EMI/EMC compliance focus",
-      "Executed comprehensive RF emissions/immunity testing",
-      "Performed detailed metrology validation and calibration",
+      "Led smart meter validation with a focus on firmware, EMI/EMC compliance, and metrology, ensuring adherence to Indian and global standards (IEC, IS, CISPR, CBIP)",
+      "Executed RF emissions/immunity, ESD, surge, impulse, and power variation tests, ensuring product robustness against electrical disturbances",
+      "Performed detailed metrology validation including CT-VT analysis, error correction, calibration, and automated test execution using in-house tools",
       "Developed specialized testing equipment and methodologies"
     ],
     technologies: ["EMI/EMC Testing", "Metrology", "Firmware Testing", "IEC Standards", "CBIP Compliance"]
+  },
+  {
+    company: "Scientech Technologies", 
+    position: "R&D Engineer", 
+    duration: "2005 - 2006", 
+    location: "India",
+    type: "Full-time",
+    description: "Engaged in research, development, and validation of instrumentation devices.",
+    achievements: [
+      "Contributed to innovative product developments and quality improvements",
+      "Engaged in research and development of instrumentation devices",
+      "Participated in validation processes for new product lines",
+      "Collaborated with cross-functional teams on technical solutions"
+    ],
+    technologies: ["Instrumentation", "Product Development", "R&D", "Quality Testing"]
+  },
+  {
+    company: "Arucom Electronics", 
+    position: "R&D Engineer", 
+    duration: "2004 - 2005", 
+    location: "India",
+    type: "Full-time",
+    description: "Focused on research, development, and validation of electronic instrumentation devices.",
+    achievements: [
+      "Contributed to innovative product developments in electronics domain",
+      "Engaged in validation of instrumentation devices", 
+      "Supported quality improvement initiatives",
+      "Gained foundational experience in electronic device testing"
+    ],
+    technologies: ["Electronics", "Instrumentation", "Device Testing", "R&D"]
   }
-  // ✏️ ADD MORE JOBS: Add comma and new job object above
 ];
 
 // 🛠️ TECHNICAL SKILLS

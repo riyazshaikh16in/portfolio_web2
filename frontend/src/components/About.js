@@ -25,38 +25,47 @@ const About = () => {
 
   const getIcon = (iconName) => {
     const icons = {
-      Target: <Target size={28} />,
-      Code: <Code size={28} />,
-      Lightbulb: <Lightbulb size={28} />,
-      Award: <Award size={28} />,
-      Users: <Users size={28} />
+      Target: <Target size={20} />,
+      Code: <Code size={20} />,
+      Lightbulb: <Lightbulb size={20} />,
+      Award: <Award size={20} />,
+      Users: <Users size={20} />
     };
-    return icons[iconName] || <CheckCircle size={28} />;
+    return icons[iconName] || <CheckCircle size={20} />;
   };
 
   return (
-    <section ref={sectionRef} id="about" className="section" style={{ paddingTop: '8rem', paddingBottom: '8rem' }}>
+    <section ref={sectionRef} id="about" className="section" style={{ 
+      paddingTop: '4rem', 
+      paddingBottom: '4rem',
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center'
+    }}>
       <div className="container">
-        {/* Enhanced Section Header */}
+        {/* Section Header - Compact */}
         <div className={`animate-fade-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
           textAlign: 'center',
-          marginBottom: '6rem'
+          marginBottom: '3rem'
         }}>
-          <div className="label mb-4">
+          <div className="label mb-2">
             {aboutMe.label}
           </div>
           
-          <h2 className="section-title" style={{ marginBottom: '2rem' }}>
+          <h2 className="section-title" style={{ 
+            marginBottom: '1rem',
+            fontSize: 'clamp(2rem, 5vw, 3rem)'
+          }}>
             {aboutMe.title}
             <br />
             <span className="text-gradient">{aboutMe.titleAccent}</span>
           </h2>
           
-          {/* Main Description */}
           <div className="text-body" style={{
-            fontSize: '1.25rem',
-            lineHeight: '1.8',
-            maxWidth: '800px',
+            fontSize: '1.1rem',
+            lineHeight: '1.6',
+            maxWidth: '700px',
             margin: '0 auto',
             color: 'var(--text-secondary)'
           }}>
@@ -64,85 +73,75 @@ const About = () => {
           </div>
         </div>
         
-        {/* Main Content Grid - Better Layout */}
+        {/* FIXED: Compact single-page layout */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
-          gap: '6rem',
-          alignItems: 'start',
-          marginBottom: '6rem'
+          gap: '3rem',
+          alignItems: 'start'
         }}>
-          {/* Left Column - Story & Achievements */}
+          {/* Left Column */}
           <div className={`animate-fade-in animate-delay-1 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-            {/* Continued Story */}
-            <div style={{ marginBottom: '4rem' }}>
-              {aboutMe.paragraphs.slice(1).map((paragraph, index) => (
-                <div key={index} className="text-body" style={{
-                  fontSize: '1.1rem',
-                  lineHeight: '1.7',
-                  marginBottom: '2rem',
-                  color: 'var(--text-secondary)'
-                }}>
-                  {paragraph}
-                </div>
-              ))}
+            {/* Story - Compact */}
+            <div style={{ marginBottom: '2rem' }}>
+              <div className="text-body" style={{
+                fontSize: '1rem',
+                lineHeight: '1.6',
+                marginBottom: '1rem',
+                color: 'var(--text-secondary)'
+              }}>
+                {aboutMe.paragraphs[1]}
+              </div>
+              <div className="text-body" style={{
+                fontSize: '1rem',
+                lineHeight: '1.6',
+                color: 'var(--text-secondary)'
+              }}>
+                {aboutMe.paragraphs[2]}
+              </div>
             </div>
             
-            {/* Achievements - Redesigned as Cards */}
-            <div className="glass-card" style={{ position: 'relative', overflow: 'hidden' }}>
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                width: '150px',
-                height: '150px',
-                background: 'radial-gradient(circle, rgba(49, 130, 206, 0.1) 0%, transparent 70%)',
-                transform: 'translate(50px, -50px)'
-              }}></div>
-              
-              <div className="label mb-4" style={{ position: 'relative', zIndex: 2 }}>
+            {/* FIXED: Compact Achievements - Smaller cards */}
+            <div className="glass-card" style={{ 
+              position: 'relative', 
+              overflow: 'hidden',
+              padding: '2rem'
+            }}>
+              <div className="label mb-2">
                 Career Highlights
               </div>
               
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr',
-                gap: '2rem',
-                position: 'relative',
-                zIndex: 2
+                gridTemplateColumns: '1fr 1fr 1fr',
+                gap: '1rem'
               }}>
                 {achievements.map((achievement, index) => (
                   <div key={index} style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '1.5rem',
-                    padding: '1.5rem',
+                    textAlign: 'center',
+                    padding: '1rem',
                     background: 'rgba(49, 130, 206, 0.05)',
-                    borderRadius: '16px',
+                    borderRadius: '12px',
                     border: '1px solid rgba(49, 130, 206, 0.1)'
                   }}>
                     <div style={{
-                      fontSize: '2.5rem',
+                      fontSize: '1.8rem',
                       fontWeight: '800',
                       color: 'var(--accent-primary)',
-                      minWidth: '80px',
-                      textAlign: 'center'
+                      marginBottom: '0.25rem'
                     }}>
                       {achievement.number}
                     </div>
-                    
-                    <div>
-                      <div style={{
-                        fontSize: '1.1rem',
-                        fontWeight: '600',
-                        color: 'var(--text-primary)',
-                        marginBottom: '0.25rem'
-                      }}>
-                        {achievement.label}
-                      </div>
-                      <div className="text-small">
-                        {achievement.description}
-                      </div>
+                    <div style={{
+                      fontSize: '0.85rem',
+                      fontWeight: '600',
+                      color: 'var(--text-primary)',
+                      marginBottom: '0.25rem'
+                    }}>
+                      {achievement.label}
+                    </div>
+                    <div className="text-small" style={{ fontSize: '0.7rem' }}>
+                      {achievement.description}
                     </div>
                   </div>
                 ))}
@@ -150,44 +149,37 @@ const About = () => {
             </div>
           </div>
           
-          {/* Right Column - Expertise & Credentials */}
+          {/* Right Column - Compact */}
           <div className={`animate-fade-in animate-delay-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-            {/* Core Expertise - Enhanced Design */}
-            <div className="glass-card" style={{ marginBottom: '3rem', position: 'relative', overflow: 'hidden' }}>
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '200px',
-                height: '200px',
-                background: 'radial-gradient(circle, rgba(66, 153, 225, 0.08) 0%, transparent 70%)',
-                transform: 'translate(-50px, -50px)'
-              }}></div>
-              
-              <div className="label mb-4" style={{ position: 'relative', zIndex: 2 }}>
+            {/* FIXED: Compact Expertise */}
+            <div className="glass-card" style={{ 
+              marginBottom: '2rem', 
+              position: 'relative', 
+              overflow: 'hidden',
+              padding: '2rem'
+            }}>
+              <div className="label mb-2">
                 Core Expertise
               </div>
               
               <div style={{
                 display: 'grid',
-                gap: '2rem',
-                position: 'relative',
-                zIndex: 2
+                gap: '1rem'
               }}>
                 {expertise.map((item, index) => (
                   <div key={index} style={{
                     display: 'flex',
-                    gap: '1.5rem',
-                    alignItems: 'flex-start',
-                    padding: '1.5rem',
+                    gap: '1rem',
+                    alignItems: 'center',
+                    padding: '1rem',
                     background: 'rgba(255, 255, 255, 0.02)',
-                    borderRadius: '16px',
+                    borderRadius: '12px',
                     border: '1px solid rgba(255, 255, 255, 0.05)'
                   }}>
                     <div style={{
-                      padding: '1.2rem',
+                      padding: '0.75rem',
                       background: 'rgba(49, 130, 206, 0.15)',
-                      borderRadius: '16px',
+                      borderRadius: '12px',
                       color: 'var(--accent-secondary)',
                       flexShrink: 0
                     }}>
@@ -197,15 +189,16 @@ const About = () => {
                     <div>
                       <div className="text-body" style={{
                         fontWeight: '600',
-                        marginBottom: '0.75rem',
+                        marginBottom: '0.25rem',
                         color: 'var(--text-primary)',
-                        fontSize: '1.1rem'
+                        fontSize: '0.95rem'
                       }}>
                         {item.title}
                       </div>
                       <div className="text-body" style={{
                         color: 'var(--text-secondary)',
-                        lineHeight: '1.6'
+                        lineHeight: '1.4',
+                        fontSize: '0.85rem'
                       }}>
                         {item.description}
                       </div>
@@ -215,45 +208,46 @@ const About = () => {
               </div>
             </div>
             
-            {/* Education & Certifications - Side by Side */}
+            {/* FIXED: Compact Education & Certifications */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: '1fr',
-              gap: '3rem'
+              gridTemplateColumns: '1fr 1fr',
+              gap: '1.5rem'
             }}>
               {/* Education */}
-              <div className="glass-card">
-                <div className="label mb-4">
+              <div className="glass-card" style={{ padding: '1.5rem' }}>
+                <div className="label mb-2">
                   Education
                 </div>
                 
                 <div style={{
                   display: 'grid',
-                  gap: '2rem'
+                  gap: '1rem'
                 }}>
                   {education.map((edu, index) => (
                     <div key={index} style={{
-                      padding: '1.5rem',
+                      padding: '1rem',
                       background: 'rgba(49, 130, 206, 0.05)',
-                      borderRadius: '12px',
+                      borderRadius: '8px',
                       border: '1px solid rgba(49, 130, 206, 0.1)'
                     }}>
                       <div className="text-body" style={{
                         fontWeight: '600',
                         color: 'var(--text-primary)',
-                        marginBottom: '0.5rem',
-                        fontSize: '1.05rem'
+                        marginBottom: '0.25rem',
+                        fontSize: '0.9rem'
                       }}>
                         {edu.degree}
                       </div>
                       <div className="text-body" style={{
                         color: 'var(--accent-secondary)',
-                        marginBottom: '0.5rem',
-                        fontWeight: '500'
+                        marginBottom: '0.25rem',
+                        fontWeight: '500',
+                        fontSize: '0.8rem'
                       }}>
                         {edu.field}
                       </div>
-                      <div className="text-small">
+                      <div className="text-small" style={{ fontSize: '0.75rem' }}>
                         {edu.institution} • {edu.year}
                       </div>
                     </div>
@@ -262,28 +256,28 @@ const About = () => {
               </div>
               
               {/* Certifications */}
-              <div className="glass-card">
-                <div className="label mb-4">
+              <div className="glass-card" style={{ padding: '1.5rem' }}>
+                <div className="label mb-2">
                   Certifications
                 </div>
                 
                 <div style={{
                   display: 'grid',
-                  gap: '1rem'
+                  gap: '0.75rem'
                 }}>
                   {certifications.map((cert, index) => (
                     <div key={index} style={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '1rem',
-                      padding: '1rem',
+                      gap: '0.75rem',
+                      padding: '0.75rem',
                       background: 'rgba(49, 130, 206, 0.05)',
-                      borderRadius: '12px',
+                      borderRadius: '8px',
                       border: '1px solid rgba(49, 130, 206, 0.1)'
                     }}>
-                      <CheckCircle size={20} color="var(--accent-primary)" />
+                      <CheckCircle size={14} color="var(--accent-primary)" />
                       <span className="text-body" style={{ 
-                        fontSize: '0.95rem',
+                        fontSize: '0.8rem',
                         fontWeight: '500'
                       }}>
                         {cert}
@@ -300,7 +294,7 @@ const About = () => {
       <style jsx>{`
         .opacity-0 {
           opacity: 0;
-          transform: translateY(40px);
+          transform: translateY(30px);
         }
         
         .opacity-100 {
@@ -309,7 +303,7 @@ const About = () => {
         }
         
         .animate-fade-in {
-          transition: all 0.8s ease-out;
+          transition: all 0.6s ease-out;
         }
         
         .animate-delay-1 {
@@ -323,7 +317,12 @@ const About = () => {
         @media (max-width: 1024px) {
           .container > div:nth-child(2) {
             grid-template-columns: 1fr !important;
-            gap: 4rem !important;
+            gap: 2rem !important;
+          }
+          
+          .container > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
           }
         }
       `}</style>

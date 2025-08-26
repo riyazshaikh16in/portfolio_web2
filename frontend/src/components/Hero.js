@@ -28,16 +28,16 @@ const Hero = () => {
       id="hero" 
       className="section" 
       style={{ 
-        minHeight: '100vh',
+        height: '100vh',
         display: 'flex',
         alignItems: 'center',
-        paddingTop: '80px',
-        paddingBottom: '80px',
+        paddingTop: '0',
+        paddingBottom: '0',
         position: 'relative',
         overflow: 'hidden'
       }}
     >
-      {/* Enhanced Background Elements */}
+      {/* Background Elements */}
       <div style={{
         position: 'absolute',
         top: '15%',
@@ -63,27 +63,37 @@ const Hero = () => {
       <div className="container">
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1.2fr 1fr',
-          gap: '6rem',
+          gridTemplateColumns: '1fr 400px',
+          gap: '4rem',
           alignItems: 'center',
-          maxWidth: '1400px',
+          height: '100%',
+          maxWidth: '1200px',
           margin: '0 auto'
         }}>
-          {/* Content Side - Better Typography Hierarchy */}
-          <div className={`animate-fade-in ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="label mb-4" style={{ fontSize: '0.9rem' }}>
+          {/* Content Side - FIXED: Better height utilization */}
+          <div className={`animate-fade-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            height: '400px' // Match photo height
+          }}>
+            <div className="label mb-3" style={{ fontSize: '0.9rem' }}>
               {personalInfo.welcomeLabel}
             </div>
             
-            <h1 className="hero-title" style={{ marginBottom: '1.5rem' }}>
+            <h1 className="hero-title" style={{ 
+              marginBottom: '1rem',
+              fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+              lineHeight: '1.1'
+            }}>
               {personalInfo.name}
             </h1>
             
             <div style={{
-              fontSize: '1.75rem',
+              fontSize: '1.5rem',
               fontWeight: '600',
               color: 'var(--accent-secondary)',
-              marginBottom: '2.5rem',
+              marginBottom: '1.5rem',
               background: 'var(--accent-gradient)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -93,53 +103,52 @@ const Hero = () => {
             </div>
             
             <div className="text-body" style={{
-              fontSize: '1.3rem',
-              lineHeight: '1.8',
-              marginBottom: '2rem',
-              maxWidth: '90%',
+              fontSize: '1.1rem',
+              lineHeight: '1.6',
+              marginBottom: '1.5rem',
               color: 'var(--text-secondary)'
             }}>
               {personalInfo.description}
             </div>
             
             <div className="text-body" style={{
-              fontSize: '1.1rem',
+              fontSize: '1rem',
               color: 'var(--accent-light)',
-              marginBottom: '3.5rem',
+              marginBottom: '2rem',
               fontStyle: 'italic',
               fontWeight: '500'
             }}>
               {personalInfo.tagline}
             </div>
             
-            {/* Enhanced Action Buttons */}
+            {/* Action Buttons */}
             <div style={{
               display: 'flex',
-              gap: '2rem',
-              marginBottom: '5rem',
+              gap: '1.5rem',
+              marginBottom: '2rem',
               flexWrap: 'wrap'
             }}>
               <button className="btn-primary" onClick={scrollToContact} style={{
-                fontSize: '1.1rem',
-                padding: '1.5rem 3rem'
+                fontSize: '1rem',
+                padding: '1rem 2rem'
               }}>
-                <Mail size={22} />
+                <Mail size={18} />
                 Get In Touch
               </button>
               
               <button className="btn-secondary" onClick={scrollToAbout} style={{
-                fontSize: '1.1rem',
-                padding: '1.5rem 3rem'
+                fontSize: '1rem',
+                padding: '1rem 2rem'
               }}>
-                <Award size={22} />
+                <Award size={18} />
                 View Experience
               </button>
             </div>
             
-            {/* Redesigned Stats - Horizontal Layout */}
+            {/* Stats - FIXED: Better spacing within photo height */}
             <div style={{
               display: 'flex',
-              gap: '3rem',
+              gap: '2rem',
               flexWrap: 'wrap'
             }}>
               {stats.map((stat, index) => (
@@ -147,23 +156,26 @@ const Hero = () => {
                   textAlign: 'left'
                 }}>
                   <div style={{
-                    fontSize: '3rem',
+                    fontSize: '2rem',
                     fontWeight: '800',
                     color: 'var(--accent-primary)',
-                    marginBottom: '0.5rem',
+                    marginBottom: '0.25rem',
                     lineHeight: '1'
                   }}>
                     {stat.value}
                   </div>
                   <div style={{
-                    fontSize: '1.1rem',
+                    fontSize: '0.9rem',
                     fontWeight: '600',
                     color: 'var(--text-primary)',
                     marginBottom: '0.25rem'
                   }}>
                     {stat.label}
                   </div>
-                  <div className="text-small" style={{ color: 'var(--text-muted)' }}>
+                  <div className="text-small" style={{ 
+                    color: 'var(--text-muted)',
+                    fontSize: '0.8rem'
+                  }}>
                     {stat.description}
                   </div>
                 </div>
@@ -171,17 +183,17 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Enhanced Photo Side */}
+          {/* Photo Side - FIXED: Exactly 400px height */}
           <div className={`animate-fade-in animate-delay-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            position: 'relative'
+            position: 'relative',
+            height: '400px'
           }}>
-            {/* Main Photo Container */}
             <div className="photo-container" style={{
-              width: '450px',
-              height: '450px',
+              width: '400px',
+              height: '400px',
               position: 'relative',
               borderRadius: '50%',
               background: 'var(--accent-gradient)',
@@ -208,18 +220,18 @@ const Hero = () => {
                   }}
                 />
                 
-                {/* Enhanced Floating Elements */}
+                {/* Floating Elements */}
                 <div style={{
                   position: 'absolute',
                   top: '15%',
                   right: '-8%',
                   background: 'var(--accent-gradient)',
-                  padding: '1.2rem',
+                  padding: '1rem',
                   borderRadius: '50%',
                   boxShadow: '0 15px 40px rgba(49, 130, 206, 0.4)',
                   animation: 'float 6s ease-in-out infinite'
                 }}>
-                  <Code size={28} color="white" />
+                  <Code size={24} color="white" />
                 </div>
                 
                 <div style={{
@@ -227,33 +239,22 @@ const Hero = () => {
                   bottom: '20%',
                   left: '-12%',
                   background: 'var(--accent-gradient)',
-                  padding: '1.2rem',
+                  padding: '1rem',
                   borderRadius: '50%',
                   boxShadow: '0 15px 40px rgba(66, 153, 225, 0.4)',
                   animation: 'float 8s ease-in-out infinite reverse'
                 }}>
-                  <Award size={28} color="white" />
+                  <Award size={24} color="white" />
                 </div>
               </div>
             </div>
-            
-            {/* Decorative Background Ring */}
-            <div style={{
-              position: 'absolute',
-              width: '550px',
-              height: '550px',
-              border: '1px solid rgba(49, 130, 206, 0.2)',
-              borderRadius: '50%',
-              zIndex: -1,
-              animation: 'pulse 4s ease-in-out infinite'
-            }}></div>
           </div>
         </div>
         
-        {/* Enhanced Scroll Indicator */}
+        {/* Scroll Indicator */}
         <div style={{
           position: 'absolute',
-          bottom: '3rem',
+          bottom: '2rem',
           left: '50%',
           transform: 'translateX(-50%)',
           display: 'flex',
@@ -280,7 +281,7 @@ const Hero = () => {
             borderRadius: '50%',
             background: 'rgba(49, 130, 206, 0.1)'
           }}>
-            <ArrowDown size={24} color="var(--accent-secondary)" />
+            <ArrowDown size={20} color="var(--accent-secondary)" />
           </div>
         </div>
       </div>
@@ -316,19 +317,20 @@ const Hero = () => {
           .container > div {
             grid-template-columns: 1fr !important;
             text-align: center;
-            gap: 4rem !important;
+            gap: 3rem !important;
+            height: auto !important;
           }
           
           .photo-container {
-            width: 350px !important;
-            height: 350px !important;
+            width: 300px !important;
+            height: 300px !important;
           }
         }
         
         @media (max-width: 768px) {
           .photo-container {
-            width: 280px !important;
-            height: 280px !important;
+            width: 250px !important;
+            height: 250px !important;
           }
         }
       `}</style>
