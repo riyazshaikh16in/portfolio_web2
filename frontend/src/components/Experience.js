@@ -33,7 +33,7 @@ const Experience = () => {
       justifyContent: 'center'
     }}>
       <div className="container">
-        {/* Section Header - Compact */}
+        {/* Section Header */}
         <div className={`animate-fade-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
           textAlign: 'center',
           marginBottom: '3rem'
@@ -62,14 +62,14 @@ const Experience = () => {
           </div>
         </div>
         
-        {/* Timeline - Compact for single page */}
-        <div style={{
+        {/* Timeline */}
+        <div className="timeline-container" style={{
           maxWidth: '1000px',
           margin: '0 auto',
           position: 'relative'
         }}>
           {/* Timeline Line */}
-          <div style={{
+          <div className="timeline-line" style={{
             position: 'absolute',
             left: '30px',
             top: '0',
@@ -82,7 +82,7 @@ const Experience = () => {
           {workExperience.map((job, index) => (
             <div 
               key={index}
-              className={`animate-fade-in animate-delay-${index + 1} ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+              className={`timeline-item animate-fade-in animate-delay-${index + 1} ${isVisible ? 'opacity-100' : 'opacity-0'}`}
               style={{
                 position: 'relative',
                 marginBottom: index === workExperience.length - 1 ? '0' : '2rem',
@@ -90,7 +90,7 @@ const Experience = () => {
               }}
             >
               {/* Timeline Dot */}
-              <div style={{
+              <div className="timeline-dot" style={{
                 position: 'absolute',
                 left: '22px',
                 top: '1rem',
@@ -107,14 +107,14 @@ const Experience = () => {
                 <Briefcase size={10} color="white" />
               </div>
               
-              {/* Job Card - Compact */}
-              <div className="glass-card" style={{ 
+              {/* Job Card */}
+              <div className="job-card glass-card" style={{ 
                 position: 'relative', 
                 overflow: 'hidden',
                 padding: '1.5rem'
               }}>
                 {/* Job Header */}
-                <div style={{
+                <div className="job-header" style={{
                   marginBottom: '1rem'
                 }}>
                   <div style={{
@@ -152,7 +152,7 @@ const Experience = () => {
                         </span>
                       </div>
                       
-                      <div style={{
+                      <div className="job-meta" style={{
                         display: 'flex',
                         alignItems: 'center',
                         gap: '1rem',
@@ -190,7 +190,7 @@ const Experience = () => {
                     
                     {/* Status Badge */}
                     {index === 0 && (
-                      <div style={{
+                      <div className="status-badge" style={{
                         padding: '0.5rem 1rem',
                         background: 'rgba(49, 130, 206, 0.15)',
                         borderRadius: '20px',
@@ -221,7 +221,7 @@ const Experience = () => {
 
                   {/* Special roles for Landis+Gyr */}
                   {job.roles && (
-                    <div style={{ marginBottom: '1rem' }}>
+                    <div className="job-roles" style={{ marginBottom: '1rem' }}>
                       <div className="label mb-1" style={{ fontSize: '0.7rem' }}>
                         Key Roles
                       </div>
@@ -258,8 +258,8 @@ const Experience = () => {
                   )}
                 </div>
                 
-                {/* Key Achievements - Compact */}
-                <div style={{ 
+                {/* Key Achievements */}
+                <div className="job-achievements" style={{ 
                   marginBottom: '1rem'
                 }}>
                   <div className="label mb-1" style={{ fontSize: '0.7rem' }}>
@@ -296,8 +296,8 @@ const Experience = () => {
                   </div>
                 </div>
                 
-                {/* Technologies - Compact */}
-                <div>
+                {/* Technologies */}
+                <div className="job-technologies">
                   <div className="label mb-1" style={{ fontSize: '0.7rem' }}>
                     Technologies & Tools
                   </div>
@@ -359,20 +359,74 @@ const Experience = () => {
           transition-delay: 0.4s;
         }
         
+        /* FIXED: Complete mobile responsiveness */
         @media (max-width: 768px) {
-          .container > div:nth-child(2) > div {
+          .section {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+            min-height: auto !important;
+          }
+          
+          .timeline-item {
             padding-left: 60px !important;
           }
           
-          .container > div:nth-child(2) > div > div:first-child {
-            left: 20px !important;
+          .timeline-dot {
+            left: 18px !important;
             width: 14px !important;
             height: 14px !important;
           }
           
-          .container > div:nth-child(2)::before {
-            left: 28px !important;
+          .timeline-line {
+            left: 25px !important;
             width: 1px !important;
+          }
+          
+          .job-card {
+            padding: 1.5rem !important;
+          }
+          
+          .job-meta {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 0.5rem !important;
+          }
+          
+          .status-badge {
+            margin-top: 1rem;
+            align-self: flex-start;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .container {
+            padding: 0 1rem !important;
+          }
+          
+          .timeline-item {
+            padding-left: 40px !important;
+          }
+          
+          .timeline-dot {
+            left: 12px !important;
+            width: 12px !important;
+            height: 12px !important;
+          }
+          
+          .timeline-line {
+            left: 18px !important;
+          }
+          
+          .job-card {
+            padding: 1rem !important;
+          }
+          
+          .job-header h3 {
+            font-size: 1rem !important;
+          }
+          
+          .section-title {
+            font-size: clamp(1.5rem, 6vw, 2rem) !important;
           }
         }
       `}</style>

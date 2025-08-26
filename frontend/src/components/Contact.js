@@ -98,7 +98,7 @@ const Contact = () => {
       }}
     >
       <div className="container">
-        {/* Section Header - Compact */}
+        {/* Section Header */}
         <div className={`animate-fade-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
           textAlign: 'center',
           marginBottom: '3rem'
@@ -127,8 +127,8 @@ const Contact = () => {
           </div>
         </div>
         
-        {/* FIXED: Removed send message form, rearranged content */}
-        <div style={{
+        {/* Contact Content */}
+        <div className="contact-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gap: '3rem',
@@ -136,8 +136,8 @@ const Contact = () => {
           maxWidth: '1000px',
           margin: '0 auto'
         }}>
-          {/* Contact Information - Enhanced */}
-          <div className={`animate-fade-in animate-delay-1 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          {/* Contact Information */}
+          <div className={`contact-info animate-fade-in animate-delay-1 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
             <div className="glass-card" style={{
               padding: '2rem',
               position: 'relative',
@@ -157,14 +157,14 @@ const Contact = () => {
                 Contact Information
               </div>
               
-              <div style={{
+              <div className="contact-items" style={{
                 display: 'grid',
                 gap: '1.5rem',
                 position: 'relative',
                 zIndex: 2
               }}>
                 {contactInfo.map((info, index) => (
-                  <div key={index} style={{
+                  <div key={index} className="contact-item" style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: '1.5rem',
@@ -220,8 +220,8 @@ const Contact = () => {
             </div>
           </div>
           
-          {/* Services Available - Enhanced */}
-          <div className={`animate-fade-in animate-delay-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          {/* Services Available */}
+          <div className={`services-info animate-fade-in animate-delay-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
             <div className="glass-card" style={{
               position: 'relative',
               overflow: 'hidden',
@@ -241,14 +241,14 @@ const Contact = () => {
                 Services Available
               </div>
               
-              <div style={{
+              <div className="service-items" style={{
                 display: 'grid',
                 gap: '1.5rem',
                 position: 'relative',
                 zIndex: 2
               }}>
                 {services.map((service, index) => (
-                  <div key={index} style={{
+                  <div key={index} className="service-item" style={{
                     display: 'flex',
                     alignItems: 'flex-start',
                     gap: '1rem',
@@ -318,7 +318,7 @@ const Contact = () => {
         </div>
         
         {/* Additional Contact Information */}
-        <div className={`glass-card animate-fade-in animate-delay-3 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
+        <div className={`response-time glass-card animate-fade-in animate-delay-3 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
           marginTop: '3rem',
           textAlign: 'center',
           position: 'relative',
@@ -390,10 +390,60 @@ const Contact = () => {
           }
         }
         
+        /* FIXED: Complete mobile responsiveness */
         @media (max-width: 1024px) {
-          .container > div:nth-child(2) {
+          .contact-grid {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .section {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+            min-height: auto !important;
+          }
+          
+          .glass-card {
+            padding: 1.5rem !important;
+          }
+          
+          .contact-item {
+            flex-direction: column !important;
+            text-align: center !important;
+            gap: 1rem !important;
+          }
+          
+          .service-item {
+            flex-direction: column !important;
+            text-align: center !important;
+            gap: 1rem !important;
+          }
+          
+          .service-item > div:first-child {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .container {
+            padding: 0 1rem !important;
+          }
+          
+          .glass-card {
+            padding: 1rem !important;
+          }
+          
+          .section-title {
+            font-size: clamp(1.5rem, 6vw, 2rem) !important;
+          }
+          
+          .contact-items,
+          .service-items {
+            gap: 1rem !important;
           }
         }
       `}</style>
