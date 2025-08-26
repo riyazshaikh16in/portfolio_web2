@@ -325,6 +325,7 @@ const Hero = () => {
           .hero-content {
             height: auto !important;
             order: 2;
+            text-align: center !important;
           }
           
           .hero-photo {
@@ -336,6 +337,7 @@ const Hero = () => {
           .photo-container {
             width: 300px !important;
             height: 300px !important;
+            margin: 0 auto !important;
           }
           
           .floating-icon {
