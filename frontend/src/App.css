@@ -476,7 +476,7 @@ body::after {
 .mt-3 { margin-top: 1.5rem; }
 .mt-4 { margin-top: 2rem; }
 
-/* Enhanced Responsive Design */
+/* FIXED: Complete Mobile Responsive Design */
 @media (max-width: 1200px) {
   .container {
     padding: 0 1.5rem;
@@ -497,7 +497,8 @@ body::after {
   }
   
   .section {
-    padding: 4rem 0;
+    padding: 3rem 0;
+    min-height: auto !important;
   }
   
   .hero-title {
@@ -520,8 +521,6 @@ body::after {
   .btn-primary, .btn-secondary {
     padding: 1rem 2rem;
     font-size: 1rem;
-    width: 100%;
-    justify-content: center;
   }
   
   .nav-container {
@@ -531,28 +530,58 @@ body::after {
   .nav-header {
     padding: 1rem 0;
   }
+  
+  /* Mobile-specific fixes */
+  .text-body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .label {
+    font-size: 0.7rem;
+  }
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .section {
+    padding: 2rem 0;
+  }
+  
   .hero-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
     margin-bottom: 1rem;
   }
   
   .section-title {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 7vw, 2rem);
   }
   
   .glass-card {
-    padding: 1.25rem;
+    padding: 1rem;
   }
   
   .btn-primary, .btn-secondary {
     padding: 1rem 1.5rem;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
   
   .text-body {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .text-small {
+    font-size: 0.8rem;
+  }
+  
+  .label {
+    font-size: 0.65rem;
+  }
+  
+  .nav-logo {
+    font-size: 1.25rem;
   }
 }
