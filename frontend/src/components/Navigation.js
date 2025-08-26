@@ -42,13 +42,13 @@ const Navigation = () => {
   return (
     <nav className={`nav-header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        {/* Logo */}
+        {/* FIXED: Logo now shows "Riyaz Shaikh" */}
         <div 
           className="nav-logo"
           onClick={() => scrollToSection('hero')}
           style={{ cursor: 'pointer' }}
         >
-          {personalInfo.name.split(' ')[0]}
+          {personalInfo.name}
         </div>
 
         {/* Desktop Navigation */}

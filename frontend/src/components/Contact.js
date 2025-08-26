@@ -1,16 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, Phone, MapPin, Linkedin, Send, Clock, CheckCircle, User, Building } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Clock, CheckCircle, User, Building } from 'lucide-react';
 import { contactInfo as contactData, availability } from '../data/portfolioData';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -30,28 +23,7 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Mock form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you within 24 hours.');
-    setFormData({ name: '', email: '', company: '', message: '' });
-    setIsSubmitting(false);
-  };
-
-  // FIXED: Now using data from portfolioData.js
+  // Contact information using data from portfolioData.js
   const contactInfo = [
     {
       icon: <Mail size={24} />,
@@ -85,25 +57,25 @@ const Contact = () => {
 
   const services = [
     {
-      icon: <User size={24} />,
+      icon: <User size={20} />,
       title: "Consulting & Advisory",
       description: "Strategic guidance on test automation frameworks and validation methodologies",
       availability: "Available"
     },
     {
-      icon: <Building size={24} />,
+      icon: <Building size={20} />,
       title: "Project Leadership", 
       description: "Leading complex validation projects across multiple regions and technologies",
       availability: "Available"
     },
     {
-      icon: <CheckCircle size={24} />,
+      icon: <CheckCircle size={20} />,
       title: "Team Training",
       description: "Upskilling teams on PyATS, automation best practices, and testing methodologies",
       availability: "Available"
     },
     {
-      icon: <Clock size={24} />,
+      icon: <Clock size={20} />,
       title: "Technical Workshops",
       description: "Conducting workshops on smart meter testing, compliance, and industry standards",
       availability: "Available"
@@ -116,146 +88,162 @@ const Contact = () => {
       id="contact" 
       className="section"
       style={{ 
-        paddingTop: '8rem',
-        paddingBottom: '8rem',
+        paddingTop: '4rem',
+        paddingBottom: '4rem',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.1)' 
       }}
     >
       <div className="container">
-        {/* Enhanced Section Header */}
+        {/* Section Header - Compact */}
         <div className={`animate-fade-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
           textAlign: 'center',
-          marginBottom: '6rem'
+          marginBottom: '3rem'
         }}>
-          <div className="label mb-4">
+          <div className="label mb-2">
             Let's Connect
           </div>
           
-          <h2 className="section-title" style={{ marginBottom: '2rem' }}>
+          <h2 className="section-title" style={{ 
+            marginBottom: '1rem',
+            fontSize: 'clamp(2rem, 5vw, 3rem)'
+          }}>
             Get In
             <br />
             <span className="text-gradient">Touch</span>
           </h2>
           
           <div className="text-body" style={{
-            fontSize: '1.2rem',
-            lineHeight: '1.7',
-            maxWidth: '700px',
+            fontSize: '1.1rem',
+            lineHeight: '1.6',
+            maxWidth: '600px',
             margin: '0 auto',
             color: 'var(--text-secondary)'
           }}>
-            Ready to discuss your next validation project or explore opportunities for collaboration? Let's start the conversation.
+            Ready to discuss your next validation project or explore opportunities for collaboration?
           </div>
         </div>
         
+        {/* FIXED: Removed send message form, rearranged content */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
-          gap: '4rem',
+          gap: '3rem',
           alignItems: 'start',
-          maxWidth: '1200px',
+          maxWidth: '1000px',
           margin: '0 auto'
         }}>
-          {/* Contact Information - Enhanced Layout */}
+          {/* Contact Information - Enhanced */}
           <div className={`animate-fade-in animate-delay-1 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-            {/* Contact Cards - Better Design */}
-            <div style={{
-              display: 'grid',
-              gap: '1.5rem',
-              marginBottom: '4rem'
+            <div className="glass-card" style={{
+              padding: '2rem',
+              position: 'relative',
+              overflow: 'hidden'
             }}>
-              {contactInfo.map((info, index) => (
-                <div key={index} className="glass-card" style={{
-                  padding: '2rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '1.5rem',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  cursor: info.link ? 'pointer' : 'default',
-                  transition: 'all 0.3s ease'
-                }}
-                onClick={() => info.link && window.open(info.link, '_blank')}
-                onMouseEnter={(e) => {
-                  if (info.link) {
-                    e.currentTarget.style.transform = 'translateY(-4px)';
-                    e.currentTarget.style.boxShadow = '0 15px 40px rgba(49, 130, 206, 0.2)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (info.link) {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = 'var(--shadow-glass)';
-                  }
-                }}
-                >
-                  {/* Background Pattern */}
-                  <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    width: '100px',
-                    height: '100px',
-                    background: info.color,
-                    borderRadius: '50%',
-                    transform: 'translate(40px, -40px)',
-                    opacity: 0.5
-                  }}></div>
-                  
-                  <div style={{
-                    padding: '1.2rem',
-                    background: info.color,
-                    borderRadius: '16px',
-                    color: 'var(--accent-secondary)',
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: '150px',
+                height: '150px',
+                background: 'radial-gradient(circle, rgba(49, 130, 206, 0.08) 0%, transparent 70%)',
+                transform: 'translate(50px, -50px)'
+              }}></div>
+              
+              <div className="label mb-3" style={{ position: 'relative', zIndex: 2 }}>
+                Contact Information
+              </div>
+              
+              <div style={{
+                display: 'grid',
+                gap: '1.5rem',
+                position: 'relative',
+                zIndex: 2
+              }}>
+                {contactInfo.map((info, index) => (
+                  <div key={index} style={{
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                    position: 'relative',
-                    zIndex: 2
-                  }}>
-                    {info.icon}
-                  </div>
-                  
-                  <div style={{ position: 'relative', zIndex: 2 }}>
-                    <div className="label mb-1">
-                      {info.label}
-                    </div>
-                    <div className="text-body" style={{
-                      color: 'var(--text-primary)',
-                      fontWeight: '500',
-                      fontSize: '1.05rem'
+                    gap: '1.5rem',
+                    padding: '1.5rem',
+                    background: 'rgba(255, 255, 255, 0.02)',
+                    borderRadius: '16px',
+                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    cursor: info.link ? 'pointer' : 'default',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onClick={() => info.link && window.open(info.link, '_blank')}
+                  onMouseEnter={(e) => {
+                    if (info.link) {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 8px 25px rgba(49, 130, 206, 0.15)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (info.link) {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }
+                  }}
+                  >
+                    <div style={{
+                      padding: '1rem',
+                      background: info.color,
+                      borderRadius: '12px',
+                      color: 'var(--accent-secondary)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
                     }}>
-                      {info.value}
+                      {info.icon}
+                    </div>
+                    
+                    <div>
+                      <div className="label mb-1">
+                        {info.label}
+                      </div>
+                      <div className="text-body" style={{
+                        color: 'var(--text-primary)',
+                        fontWeight: '600',
+                        fontSize: '1rem'
+                      }}>
+                        {info.value}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-            
-            {/* Services Available - Enhanced Design */}
+          </div>
+          
+          {/* Services Available - Enhanced */}
+          <div className={`animate-fade-in animate-delay-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
             <div className="glass-card" style={{
               position: 'relative',
               overflow: 'hidden',
-              padding: '3rem'
+              padding: '2rem'
             }}>
               <div style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
-                width: '200px',
-                height: '200px',
-                background: 'radial-gradient(circle, rgba(49, 130, 206, 0.08) 0%, transparent 70%)',
+                width: '150px',
+                height: '150px',
+                background: 'radial-gradient(circle, rgba(66, 153, 225, 0.08) 0%, transparent 70%)',
                 transform: 'translate(-50px, -50px)'
               }}></div>
               
-              <div className="label mb-4" style={{ position: 'relative', zIndex: 2 }}>
+              <div className="label mb-3" style={{ position: 'relative', zIndex: 2 }}>
                 Services Available
               </div>
               
               <div style={{
                 display: 'grid',
-                gap: '2rem',
+                gap: '1.5rem',
                 position: 'relative',
                 zIndex: 2
               }}>
@@ -263,11 +251,12 @@ const Contact = () => {
                   <div key={index} style={{
                     display: 'flex',
                     alignItems: 'flex-start',
-                    gap: '1.5rem',
+                    gap: '1rem',
                     padding: '1.5rem',
                     background: 'rgba(255, 255, 255, 0.02)',
                     borderRadius: '16px',
-                    border: '1px solid rgba(255, 255, 255, 0.05)'
+                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    position: 'relative'
                   }}>
                     {/* Availability Indicator */}
                     <div style={{
@@ -286,7 +275,7 @@ const Contact = () => {
                         animation: 'pulse 2s infinite'
                       }}></div>
                       <span style={{
-                        fontSize: '0.75rem',
+                        fontSize: '0.7rem',
                         color: 'var(--accent-secondary)',
                         fontWeight: '600'
                       }}>
@@ -295,9 +284,9 @@ const Contact = () => {
                     </div>
                     
                     <div style={{
-                      padding: '1rem',
+                      padding: '0.75rem',
                       background: 'rgba(49, 130, 206, 0.1)',
-                      borderRadius: '12px',
+                      borderRadius: '10px',
                       color: 'var(--accent-secondary)',
                       flexShrink: 0
                     }}>
@@ -307,15 +296,15 @@ const Contact = () => {
                     <div>
                       <div className="text-body" style={{
                         fontWeight: '600',
-                        marginBottom: '0.75rem',
+                        marginBottom: '0.5rem',
                         color: 'var(--text-primary)',
-                        fontSize: '1.1rem'
+                        fontSize: '1rem'
                       }}>
                         {service.title}
                       </div>
                       <div className="text-body" style={{
-                        fontSize: '0.95rem',
-                        lineHeight: '1.6',
+                        fontSize: '0.9rem',
+                        lineHeight: '1.5',
                         color: 'var(--text-secondary)'
                       }}>
                         {service.description}
@@ -326,148 +315,41 @@ const Contact = () => {
               </div>
             </div>
           </div>
+        </div>
+        
+        {/* Additional Contact Information */}
+        <div className={`glass-card animate-fade-in animate-delay-3 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
+          marginTop: '3rem',
+          textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+          padding: '2rem',
+          maxWidth: '800px',
+          margin: '3rem auto 0 auto'
+        }}>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '200px',
+            height: '100px',
+            background: 'radial-gradient(ellipse, rgba(49, 130, 206, 0.1) 0%, transparent 70%)'
+          }}></div>
           
-          {/* Contact Form - Enhanced Design */}
-          <div className={`glass-card animate-fade-in animate-delay-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
-            padding: '3rem',
+          <div className="label mb-2" style={{ position: 'relative', zIndex: 2 }}>
+            Response Time
+          </div>
+          
+          <div className="text-body" style={{
+            fontSize: '1.1rem',
+            lineHeight: '1.6',
             position: 'relative',
-            overflow: 'hidden'
+            zIndex: 2,
+            color: 'var(--text-secondary)'
           }}>
-            {/* Background Pattern */}
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              right: 0,
-              width: '250px',
-              height: '250px',
-              background: 'radial-gradient(circle, rgba(49, 130, 206, 0.08) 0%, transparent 70%)',
-              transform: 'translate(80px, -80px)'
-            }}></div>
-            
-            <div className="label mb-4" style={{ position: 'relative', zIndex: 2 }}>
-              Send Message
-            </div>
-            
-            <form onSubmit={handleSubmit} style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '2rem',
-              position: 'relative',
-              zIndex: 2
-            }}>
-              <div className="form-group">
-                <label className="form-label" style={{ fontSize: '1rem', fontWeight: '600' }}>
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input"
-                  placeholder="Your full name"
-                  style={{ padding: '1.2rem', fontSize: '1rem' }}
-                />
-              </div>
-              
-              <div className="form-group">
-                <label className="form-label" style={{ fontSize: '1rem', fontWeight: '600' }}>
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="form-input"
-                  placeholder="your.email@company.com"
-                  style={{ padding: '1.2rem', fontSize: '1rem' }}
-                />
-              </div>
-              
-              <div className="form-group">
-                <label className="form-label" style={{ fontSize: '1rem', fontWeight: '600' }}>
-                  Company/Organization
-                </label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  className="form-input"
-                  placeholder="Your company name"
-                  style={{ padding: '1.2rem', fontSize: '1rem' }}
-                />
-              </div>
-              
-              <div className="form-group">
-                <label className="form-label" style={{ fontSize: '1rem', fontWeight: '600' }}>
-                  Message *
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={6}
-                  className="form-textarea"
-                  placeholder="Tell me about your project or how I can help you achieve your validation goals..."
-                  style={{ padding: '1.2rem', fontSize: '1rem', resize: 'vertical' }}
-                />
-              </div>
-              
-              <button
-                type="submit"
-                className="btn-primary"
-                disabled={isSubmitting}
-                style={{
-                  width: '100%',
-                  opacity: isSubmitting ? 0.7 : 1,
-                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                  padding: '1.5rem 2rem',
-                  fontSize: '1.1rem'
-                }}
-              >
-                {isSubmitting ? (
-                  <>
-                    <div style={{
-                      width: '20px',
-                      height: '20px',
-                      border: '2px solid transparent',
-                      borderTop: '2px solid currentColor',
-                      borderRadius: '50%',
-                      animation: 'spin 1s linear infinite'
-                    }}></div>
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send size={20} />
-                    Send Message
-                  </>
-                )}
-              </button>
-            </form>
-            
-            <div style={{
-              marginTop: '2rem',
-              padding: '1.5rem',
-              background: 'rgba(49, 130, 206, 0.05)',
-              borderRadius: '12px',
-              border: '1px solid rgba(49, 130, 206, 0.2)',
-              position: 'relative',
-              zIndex: 2
-            }}>
-              <div className="text-body" style={{
-                textAlign: 'center',
-                color: 'var(--text-secondary)',
-                fontSize: '0.95rem'
-              }}>
-                <strong>Response Time:</strong> I typically respond within 24 hours during business days
-              </div>
-            </div>
+            I typically respond within <strong style={{ color: 'var(--accent-secondary)' }}>24 hours</strong> during business days. 
+            Available for consulting, project leadership, and technical advisory roles across global markets.
           </div>
         </div>
       </div>
@@ -475,7 +357,7 @@ const Contact = () => {
       <style jsx>{`
         .opacity-0 {
           opacity: 0;
-          transform: translateY(40px);
+          transform: translateY(30px);
         }
         
         .opacity-100 {
@@ -484,7 +366,7 @@ const Contact = () => {
         }
         
         .animate-fade-in {
-          transition: all 0.8s ease-out;
+          transition: all 0.6s ease-out;
         }
         
         .animate-delay-1 {
@@ -495,9 +377,8 @@ const Contact = () => {
           transition-delay: 0.4s;
         }
         
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+        .animate-delay-3 {
+          transition-delay: 0.6s;
         }
         
         @keyframes pulse {
@@ -512,7 +393,7 @@ const Contact = () => {
         @media (max-width: 1024px) {
           .container > div:nth-child(2) {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
+            gap: 2rem !important;
           }
         }
       `}</style>

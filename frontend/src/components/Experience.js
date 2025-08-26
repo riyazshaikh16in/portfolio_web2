@@ -25,37 +25,44 @@ const Experience = () => {
 
   return (
     <section ref={sectionRef} id="experience" className="section" style={{ 
-      paddingTop: '8rem', 
-      paddingBottom: '8rem' 
+      paddingTop: '4rem', 
+      paddingBottom: '4rem',
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center'
     }}>
       <div className="container">
-        {/* Enhanced Section Header */}
+        {/* Section Header - Compact */}
         <div className={`animate-fade-in ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
           textAlign: 'center',
-          marginBottom: '6rem'
+          marginBottom: '3rem'
         }}>
-          <div className="label mb-4">
+          <div className="label mb-2">
             Work Experience
           </div>
           
-          <h2 className="section-title" style={{ marginBottom: '2rem' }}>
+          <h2 className="section-title" style={{ 
+            marginBottom: '1rem',
+            fontSize: 'clamp(2rem, 5vw, 3rem)'
+          }}>
             Professional
             <br />
             <span className="text-gradient">Journey</span>
           </h2>
           
           <div className="text-body" style={{
-            fontSize: '1.2rem',
-            lineHeight: '1.7',
-            maxWidth: '700px',
+            fontSize: '1.1rem',
+            lineHeight: '1.6',
+            maxWidth: '600px',
             margin: '0 auto',
             color: 'var(--text-secondary)'
           }}>
-            Two decades of progressive leadership in automation, validation, and technical innovation across global markets.
+            Two decades of progressive leadership in automation, validation, and technical innovation.
           </div>
         </div>
         
-        {/* Enhanced Timeline */}
+        {/* Timeline - Compact for single page */}
         <div style={{
           maxWidth: '1000px',
           margin: '0 auto',
@@ -64,10 +71,10 @@ const Experience = () => {
           {/* Timeline Line */}
           <div style={{
             position: 'absolute',
-            left: '50px',
+            left: '30px',
             top: '0',
             bottom: '0',
-            width: '3px',
+            width: '2px',
             background: 'var(--accent-gradient)',
             borderRadius: '2px'
           }}></div>
@@ -78,65 +85,52 @@ const Experience = () => {
               className={`animate-fade-in animate-delay-${index + 1} ${isVisible ? 'opacity-100' : 'opacity-0'}`}
               style={{
                 position: 'relative',
-                marginBottom: '4rem',
-                paddingLeft: '120px'
+                marginBottom: index === workExperience.length - 1 ? '0' : '2rem',
+                paddingLeft: '80px'
               }}
             >
-              {/* Enhanced Timeline Dot */}
+              {/* Timeline Dot */}
               <div style={{
                 position: 'absolute',
-                left: '38px',
-                top: '2rem',
-                width: '28px',
-                height: '28px',
+                left: '22px',
+                top: '1rem',
+                width: '18px',
+                height: '18px',
                 background: 'var(--accent-primary)',
                 borderRadius: '50%',
-                boxShadow: '0 0 0 6px rgba(49, 130, 206, 0.2)',
+                boxShadow: '0 0 0 4px rgba(49, 130, 206, 0.2)',
                 zIndex: 2,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
               }}>
-                <Briefcase size={14} color="white" />
+                <Briefcase size={10} color="white" />
               </div>
               
-              {/* Job Card - Enhanced Design */}
+              {/* Job Card - Compact */}
               <div className="glass-card" style={{ 
                 position: 'relative', 
                 overflow: 'hidden',
-                padding: '3rem'
+                padding: '1.5rem'
               }}>
-                {/* Background Pattern */}
+                {/* Job Header */}
                 <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  right: 0,
-                  width: '200px',
-                  height: '200px',
-                  background: `radial-gradient(circle, rgba(${index % 2 === 0 ? '49, 130, 206' : '66, 153, 225'}, 0.06) 0%, transparent 70%)`,
-                  transform: 'translate(70px, -70px)'
-                }}></div>
-                
-                {/* Job Header - Improved Layout */}
-                <div style={{
-                  marginBottom: '2rem',
-                  position: 'relative',
-                  zIndex: 2
+                  marginBottom: '1rem'
                 }}>
                   <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'flex-start',
-                    marginBottom: '1.5rem',
+                    marginBottom: '0.75rem',
                     flexWrap: 'wrap',
-                    gap: '1rem'
+                    gap: '0.5rem'
                   }}>
                     <div style={{ flex: 1 }}>
                       <h3 style={{
-                        fontSize: '1.5rem',
+                        fontSize: '1.2rem',
                         fontWeight: '600',
                         color: 'var(--text-primary)',
-                        marginBottom: '0.75rem',
+                        marginBottom: '0.5rem',
                         lineHeight: '1.3'
                       }}>
                         {job.position}
@@ -145,14 +139,14 @@ const Experience = () => {
                       <div style={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '0.75rem',
-                        marginBottom: '1rem'
+                        gap: '0.5rem',
+                        marginBottom: '0.5rem'
                       }}>
-                        <Building size={18} color="var(--accent-secondary)" />
+                        <Building size={14} color="var(--accent-secondary)" />
                         <span style={{
                           color: 'var(--accent-secondary)',
                           fontWeight: '600',
-                          fontSize: '1.1rem'
+                          fontSize: '0.95rem'
                         }}>
                           {job.company}
                         </span>
@@ -161,16 +155,19 @@ const Experience = () => {
                       <div style={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '2rem',
+                        gap: '1rem',
                         flexWrap: 'wrap'
                       }}>
                         <div style={{
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '0.5rem'
+                          gap: '0.25rem'
                         }}>
-                          <Calendar size={16} color="var(--text-muted)" />
-                          <span className="text-body" style={{ fontWeight: '500' }}>
+                          <Calendar size={12} color="var(--text-muted)" />
+                          <span className="text-body" style={{ 
+                            fontWeight: '500',
+                            fontSize: '0.85rem'
+                          }}>
                             {job.duration}
                           </span>
                         </div>
@@ -178,10 +175,13 @@ const Experience = () => {
                         <div style={{
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '0.5rem'
+                          gap: '0.25rem'
                         }}>
-                          <MapPin size={16} color="var(--text-muted)" />
-                          <span className="text-body" style={{ fontWeight: '500' }}>
+                          <MapPin size={12} color="var(--text-muted)" />
+                          <span className="text-body" style={{ 
+                            fontWeight: '500',
+                            fontSize: '0.85rem'
+                          }}>
                             {job.location} • {job.type}
                           </span>
                         </div>
@@ -189,67 +189,104 @@ const Experience = () => {
                     </div>
                     
                     {/* Status Badge */}
-                    <div style={{
-                      padding: '0.75rem 1.5rem',
-                      background: 'rgba(49, 130, 206, 0.15)',
-                      borderRadius: '25px',
-                      border: '2px solid rgba(49, 130, 206, 0.3)'
-                    }}>
-                      <span style={{
-                        fontSize: '0.8rem',
-                        color: 'var(--accent-secondary)',
-                        fontWeight: '700',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.05em'
+                    {index === 0 && (
+                      <div style={{
+                        padding: '0.5rem 1rem',
+                        background: 'rgba(49, 130, 206, 0.15)',
+                        borderRadius: '20px',
+                        border: '1px solid rgba(49, 130, 206, 0.3)'
                       }}>
-                        {index === 0 ? 'Current' : 'Previous'}
-                      </span>
-                    </div>
+                        <span style={{
+                          fontSize: '0.7rem',
+                          color: 'var(--accent-secondary)',
+                          fontWeight: '700',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em'
+                        }}>
+                          Current
+                        </span>
+                      </div>
+                    )}
                   </div>
                   
                   {/* Job Description */}
                   <div className="text-body" style={{
-                    fontSize: '1.1rem',
-                    lineHeight: '1.7',
+                    fontSize: '0.9rem',
+                    lineHeight: '1.5',
                     color: 'var(--text-secondary)',
-                    marginBottom: '2rem'
+                    marginBottom: '1rem'
                   }}>
                     {job.description}
                   </div>
+
+                  {/* Special roles for Landis+Gyr */}
+                  {job.roles && (
+                    <div style={{ marginBottom: '1rem' }}>
+                      <div className="label mb-1" style={{ fontSize: '0.7rem' }}>
+                        Key Roles
+                      </div>
+                      <div style={{
+                        display: 'grid',
+                        gap: '0.5rem'
+                      }}>
+                        {job.roles.map((role, roleIndex) => (
+                          <div key={roleIndex} style={{
+                            padding: '0.75rem',
+                            background: 'rgba(255, 255, 255, 0.02)',
+                            borderRadius: '8px',
+                            border: '1px solid rgba(255, 255, 255, 0.05)'
+                          }}>
+                            <div style={{
+                              fontSize: '0.85rem',
+                              fontWeight: '600',
+                              color: 'var(--accent-secondary)',
+                              marginBottom: '0.25rem'
+                            }}>
+                              {role.title} ({role.period})
+                            </div>
+                            <div style={{
+                              fontSize: '0.8rem',
+                              color: 'var(--text-secondary)',
+                              lineHeight: '1.4'
+                            }}>
+                              {role.description}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
                 
-                {/* Key Achievements - Better Spacing */}
+                {/* Key Achievements - Compact */}
                 <div style={{ 
-                  marginBottom: '2.5rem', 
-                  position: 'relative', 
-                  zIndex: 2 
+                  marginBottom: '1rem'
                 }}>
-                  <div className="label mb-3">
+                  <div className="label mb-1" style={{ fontSize: '0.7rem' }}>
                     Key Achievements
                   </div>
                   
                   <div style={{
                     display: 'grid',
-                    gap: '1rem'
+                    gap: '0.5rem'
                   }}>
-                    {job.achievements.map((achievement, achIndex) => (
+                    {job.achievements.slice(0, 3).map((achievement, achIndex) => (
                       <div key={achIndex} style={{
                         display: 'flex',
                         alignItems: 'flex-start',
-                        gap: '1rem',
-                        padding: '1rem',
+                        gap: '0.5rem',
+                        padding: '0.5rem',
                         background: 'rgba(255, 255, 255, 0.02)',
-                        borderRadius: '12px',
-                        border: '1px solid rgba(255, 255, 255, 0.05)'
+                        borderRadius: '6px'
                       }}>
                         <CheckCircle 
-                          size={18} 
+                          size={12} 
                           color="var(--accent-primary)" 
-                          style={{ marginTop: '0.2rem', flexShrink: 0 }}
+                          style={{ marginTop: '0.1rem', flexShrink: 0 }}
                         />
                         <span className="text-body" style={{
-                          fontSize: '1rem',
-                          lineHeight: '1.6',
+                          fontSize: '0.8rem',
+                          lineHeight: '1.4',
                           color: 'var(--text-secondary)'
                         }}>
                           {achievement}
@@ -259,37 +296,27 @@ const Experience = () => {
                   </div>
                 </div>
                 
-                {/* Technologies - Enhanced Layout */}
-                <div style={{ position: 'relative', zIndex: 2 }}>
-                  <div className="label mb-3">
+                {/* Technologies - Compact */}
+                <div>
+                  <div className="label mb-1" style={{ fontSize: '0.7rem' }}>
                     Technologies & Tools
                   </div>
                   
                   <div style={{
                     display: 'flex',
                     flexWrap: 'wrap',
-                    gap: '1rem'
+                    gap: '0.5rem'
                   }}>
                     {job.technologies.map((tech, techIndex) => (
                       <span key={techIndex} style={{
-                        padding: '0.75rem 1.25rem',
+                        padding: '0.35rem 0.75rem',
                         background: 'rgba(49, 130, 206, 0.1)',
-                        borderRadius: '25px',
+                        borderRadius: '15px',
                         border: '1px solid rgba(49, 130, 206, 0.2)',
-                        fontSize: '0.9rem',
+                        fontSize: '0.7rem',
                         color: 'var(--text-primary)',
-                        fontWeight: '500',
-                        transition: 'all 0.3s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.target.style.background = 'rgba(49, 130, 206, 0.2)';
-                        e.target.style.transform = 'translateY(-2px)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.background = 'rgba(49, 130, 206, 0.1)';
-                        e.target.style.transform = 'translateY(0)';
-                      }}
-                      >
+                        fontWeight: '500'
+                      }}>
                         {tech}
                       </span>
                     ))}
@@ -299,110 +326,12 @@ const Experience = () => {
             </div>
           ))}
         </div>
-        
-        {/* Career Summary - Enhanced */}
-        <div className={`glass-card animate-fade-in animate-delay-4 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{
-          marginTop: '6rem',
-          textAlign: 'center',
-          position: 'relative',
-          overflow: 'hidden',
-          padding: '4rem 3rem'
-        }}>
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '400px',
-            height: '200px',
-            background: 'radial-gradient(ellipse, rgba(49, 130, 206, 0.1) 0%, transparent 70%)'
-          }}></div>
-          
-          <div className="label mb-4" style={{ position: 'relative', zIndex: 2 }}>
-            Career Impact
-          </div>
-          
-          <div className="text-body" style={{
-            fontSize: '1.25rem',
-            lineHeight: '1.7',
-            maxWidth: '900px',
-            margin: '0 auto 3rem auto',
-            position: 'relative',
-            zIndex: 2,
-            color: 'var(--text-secondary)'
-          }}>
-            Throughout my career, I've consistently delivered innovative solutions that bridge the gap 
-            between complex technical requirements and practical business outcomes. My focus on automation, 
-            quality assurance, and team leadership has resulted in measurable improvements across all projects.
-          </div>
-          
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '3rem',
-            maxWidth: '800px',
-            margin: '0 auto',
-            position: 'relative',
-            zIndex: 2
-          }}>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{
-                fontSize: '3.5rem',
-                fontWeight: '800',
-                color: 'var(--accent-primary)',
-                marginBottom: '0.5rem'
-              }}>
-                20+
-              </div>
-              <div className="text-body" style={{ 
-                fontWeight: '600',
-                fontSize: '1.1rem'
-              }}>
-                Years of Experience
-              </div>
-            </div>
-            
-            <div style={{ textAlign: 'center' }}>
-              <div style={{
-                fontSize: '3.5rem',
-                fontWeight: '800',
-                color: 'var(--accent-primary)',
-                marginBottom: '0.5rem'
-              }}>
-                30+
-              </div>
-              <div className="text-body" style={{ 
-                fontWeight: '600',
-                fontSize: '1.1rem'
-              }}>
-                Projects Delivered
-              </div>
-            </div>
-            
-            <div style={{ textAlign: 'center' }}>
-              <div style={{
-                fontSize: '3.5rem',
-                fontWeight: '800',
-                color: 'var(--accent-primary)',
-                marginBottom: '0.5rem'
-              }}>
-                15+
-              </div>
-              <div className="text-body" style={{ 
-                fontWeight: '600',
-                fontSize: '1.1rem'
-              }}>
-                Teams Led
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       
       <style jsx>{`
         .opacity-0 {
           opacity: 0;
-          transform: translateY(40px);
+          transform: translateY(30px);
         }
         
         .opacity-100 {
@@ -411,39 +340,39 @@ const Experience = () => {
         }
         
         .animate-fade-in {
-          transition: all 0.8s ease-out;
+          transition: all 0.6s ease-out;
         }
         
         .animate-delay-1 {
-          transition-delay: 0.2s;
+          transition-delay: 0.1s;
         }
         
         .animate-delay-2 {
-          transition-delay: 0.4s;
+          transition-delay: 0.2s;
         }
         
         .animate-delay-3 {
-          transition-delay: 0.6s;
+          transition-delay: 0.3s;
         }
         
         .animate-delay-4 {
-          transition-delay: 0.8s;
+          transition-delay: 0.4s;
         }
         
         @media (max-width: 768px) {
           .container > div:nth-child(2) > div {
-            padding-left: 80px !important;
+            padding-left: 60px !important;
           }
           
           .container > div:nth-child(2) > div > div:first-child {
-            left: 30px !important;
-            width: 20px !important;
-            height: 20px !important;
+            left: 20px !important;
+            width: 14px !important;
+            height: 14px !important;
           }
           
           .container > div:nth-child(2)::before {
-            left: 40px !important;
-            width: 2px !important;
+            left: 28px !important;
+            width: 1px !important;
           }
         }
       `}</style>
